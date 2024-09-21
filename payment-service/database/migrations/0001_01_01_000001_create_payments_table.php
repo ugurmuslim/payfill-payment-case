@@ -6,12 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    protected $connection = 'payment-service-db';
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::connection($this->connection)->create('payments', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('company_id');
             $table->bigInteger('payment_id')->nullable();
