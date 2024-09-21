@@ -46,22 +46,50 @@ Sonrasında
 http://localhost:80/api/payment/create
 ```
 
-Örnek istek body'si
 
 Bütün istekler Authorization header'ı ile gönderilmelidir. Örnek bir token
 
-Token'ı almak için api-gateway databaseinin içinde plain_text değerini alabilirsiniz.
+Token'ı almak için api-gateway klasörünün içindeki değeri alabilirsiniz.
+
 
 ```bash
-  1|un59BKC3jgjN4RkalK8Rx2VgieFHeLvB8pTQlPbkb72ce256
-```  
+  curl --request POST \
+  --url http://localhost:80/api/payment/create \
+  --header 'Accept: application/json' \
+  --header 'Authorization: Bearer 10|DJlvM6qHrkEfamMQOulScr2IeXZrUiKCvTFocbYMf2e05d3c' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: insomnia/10.0.0' \
+  --data '{
+	"companyId":1,
+	"firstName":"Ugur",
+	"lastName": "Muslim",
+	"ip": "xx.xx.xx.xx",
+	"currency":"TRY",
+	"cardNumber":"1234987612345432",
+	"name":"Ugur Muslim",
+	"ccv":123,
+	"expiryDate":"12/27",
+	"products": [
+		{
+		"id": 1,
+		"quantity": 1
+		},
+		{
+		"id": 2,
+		"quantity": 1
+	}
+	]
+}'
+```
+
+Örnek istek body'si
+
 ```json
 {
 	"firstName":"Ugur",
 	"lastName": "Muslim",
-	"ip": "175.38.12.23",
+	"ip": "xxx.xx.xx.xx",
 	"currency":"TRY",
-	"amount":123.2,
 	"cardNumber":"1234987612345432",
 	"name":"Ugur Muslim",
 	"ccv":123,
@@ -83,6 +111,14 @@ Ve ödemeleri raporlamak için
 
 ```bash
 http://localhost/api/payment/list
+```
+```bash
+curl --request GET \
+--url 'http://localhost/api/payment/list?startDate=2024-09-01&endDate=2025-09-01' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer 10|DJlvM6qHrkEfamMQOulScr2IeXZrUiKCvTFocbYMf2e05d3c' \
+--header 'Content-Type: application/json' \
+--header 'User-Agent: insomnia/10.0.0'
 ```
 
 İstek için query parametreleri

@@ -26,6 +26,15 @@ class PaymentController extends Controller
         $validator = Validator::make($request->all(), [
             'firstName' => 'required|string|max:255',
             'lastName' => 'required|string|max:255',
+            'ip' => 'required|ip',
+            'currency' => 'required|string|size:3|in:TRY', // restrict to valid currencies
+            'cardNumber' => 'required|digits:16', // assuming card number is exactly 16 digits
+            'name' => 'required|string|max:255',
+            'ccv' => 'required|digits:3', // assuming CCV is exactly 3 digits
+            'expiryDate' => 'required|string',
+            'products' => 'required|array|min:1',
+            'products.*.id' => 'required|integer|distinct', // each product must have a unique ID
+            'products.*.quantity' => 'required|integer|min:1', // quantity must be at least 1
         ]);
 
         if ($validator->fails()) {
