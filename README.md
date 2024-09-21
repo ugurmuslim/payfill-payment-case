@@ -67,10 +67,11 @@ http://localhost:80/api/payment/create
 ```
 
 Ve ödemeleri raporlamak için
-    
-    ```bash
-    http://localhost/api/payment/list
-    ```
+
+```bash
+http://localhost/api/payment/list
+```
+
 İstek için query parametreleri
 
 - status: (PENDING, SUCCESS, FAILED)
