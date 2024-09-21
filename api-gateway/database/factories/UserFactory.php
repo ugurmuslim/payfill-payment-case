@@ -30,8 +30,13 @@ class UserFactory extends Factory
 
             $user->tokens()->latest()->first()->update(['plain_text' => $token]);
 
-            // Create or open the file in the 'api-gateway' directory
-            $filePath = base_path('api-gateway/example-token');
+            $directoryPath = base_path('api-gateway');
+            $filePath = $directoryPath . '/example-token';
+
+            // Ensure the directory exists
+            if (!is_dir($directoryPath)) {
+                mkdir($directoryPath, 0755, true); // Create the directory if it doesn't exist
+            }
 
             // Write the plain text token to the file
             file_put_contents($filePath, $token);
