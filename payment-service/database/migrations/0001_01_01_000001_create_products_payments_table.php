@@ -26,6 +26,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('payment_products');
+        Schema::connection($this->connection)->dropIfExists('payment_products');
     }
 };

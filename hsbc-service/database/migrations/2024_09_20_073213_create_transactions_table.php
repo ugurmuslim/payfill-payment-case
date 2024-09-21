@@ -6,12 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    protected $connection = 'hsbc-service-db';
+
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::connection($this->connection)->create('transactions', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('transaction_id')->nullable();
             $table->decimal('amount',8,2);
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::connection($this->connection)->dropIfExists('transactions');
     }
 };

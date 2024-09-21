@@ -30,7 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cache');
-        Schema::dropIfExists('cache_locks');
+        Schema::connection($this->connection)->dropIfExists('cache');
+        Schema::connection($this->connection)->dropIfExists('cache_locks');
     }
 };
