@@ -30,7 +30,7 @@ class UserFactory extends Factory
 
             $user->tokens()->latest()->first()->update(['plain_text' => $token]);
 
-            $directoryPath = base_path('api-gateway');
+            $directoryPath = dirname(__DIR__) . '/api-gateway';
             $filePath = $directoryPath . '/example-token';
 
             // Ensure the directory exists
