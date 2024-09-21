@@ -19,6 +19,11 @@ Her servis kendi bağımsız veritabanını kullanır ve ödeme işlemleri bu mi
 Ana klasörde;
 
 ```bash
+./composer.sh
+```
+sonrasında
+
+```bash
 docker-compose up
 ```
 
