@@ -46,9 +46,17 @@ Sonrasında
 http://localhost:80/api/payment/create
 ```
 
+Örnek istek body'si
+
+Bütün istekler Authorization header'ı ile gönderilmelidir. Örnek bir token
+
+Token'ı almak için api-gateway databaseinin içinde plain_text değerini alabilirsiniz.
+
+```bash
+  1|un59BKC3jgjN4RkalK8Rx2VgieFHeLvB8pTQlPbkb72ce256
+```  
 ```json
 {
-	"companyId":1,
 	"firstName":"Ugur",
 	"lastName": "Muslim",
 	"ip": "175.38.12.23",

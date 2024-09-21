@@ -29,6 +29,12 @@ class UserFactory extends Factory
             $token = $user->createToken('api-token')->plainTextToken;
 
             $user->tokens()->latest()->first()->update(['plain_text' => $token]);
+
+            // Create or open the file in the 'api-gateway' directory
+            $filePath = base_path('api-gateway/example-token');
+
+            // Write the plain text token to the file
+            file_put_contents($filePath, $token);
         });
     }
 }
