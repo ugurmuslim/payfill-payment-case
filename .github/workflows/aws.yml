@@ -25,8 +25,22 @@
 #    and best practices on handling the access key credentials.
 
 name: Deploy to Amazon ECS
+name: Deploy web and functions
+run-name: Deploy to ${{ inputs.environment }} by @${{ github.actor }}
 
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        type: choice
+        default: dev
+        options:
+          - dev
+          - staging
+          - sandbox
+          - prod
   push:
     branches: [ "master" ]
 
